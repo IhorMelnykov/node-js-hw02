@@ -2,7 +2,7 @@ const {Schema, model} = require("mongoose");
 const {mongooseError} = require("../helpers");
 const joi = require("joi");
 
-const contactsShema = new Schema({
+const contactsSchema = new Schema({
     name: {
         type: String,
         required: [true, 'Set name for contact'],
@@ -19,9 +19,9 @@ const contactsShema = new Schema({
       },
 }, {versionKey: false, timestamps: true});
 
-contactsShema.post("save", mongooseError)
+contactsSchema.post("save", mongooseError)
 
-const Contact = model("contact", contactsShema);
+const Contact = model("contact", contactsSchema);
 
 const addSchema = joi.object({
     name: joi.string().min(3).max(18).required(),
